@@ -1,5 +1,10 @@
 local AddonName, AddonTable = ...
 
+local Locales = AddonTable["Locales"]
+local ClientLocale = GetLocale()
+local L = Locales[ClientLocale] or Locales["enUS"]
+
+
 NCM = {}
 
 function NCM.OnLoad()
@@ -23,6 +28,8 @@ function NCM.OnLoad()
 	-- dire maul time
 	NCM.dm_started = nil;
 	NCM.dm_inside = 0;
+	
+	
 end
 
 function NCM.OnReady()
@@ -270,8 +277,13 @@ function NCM.UpdateFrame()
 	NCM.TryEndSession();
 
 	-- update text here...
+	
+	local localeTxt = ""
+	if not Locales[ClientLocale] then
+		localeTxt = string.format("NCM: Client Locale '%s' is not localised!\n\n", ClientLocale)
+	end
 
-	local txt = "";
+	local txt = localeTxt;
 	local indent = "    ";
 	local reps = NCM.GetReps();
 
@@ -295,7 +307,7 @@ function NCM.UpdateFrame()
 	-- bonuses for humans
 	--
 
-	local race = UnitRace("player");
+	local race = select(2, UnitRace("player") )
 	local factor = 1;
 
 	if (race == 'Human') then
@@ -770,6 +782,7 @@ function SlashCmdList.NONCOMPOSMENTIS(msg, editbox)
 	elseif (msg == 'opts' or msg == 'options') then 
 		NCM.ShowOptions();
 	else
+		NCM.Toggle()
 		print "Non Compos Mentis commands:";
 		print "   /ncm show - Show addon";
 		print "   /ncm hide - Hide addon";
