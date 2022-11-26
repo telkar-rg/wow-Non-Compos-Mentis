@@ -2,7 +2,7 @@
 ..\..\FrameXML\UI.xsd">
 
 	<Frame name="NCMFrame" parent="UIParent" movable="true" resizable="true" clampedToScreen="true" hidden="false" frameStrata="MEDIUM" toplevel="true">
-		<Size x="300" y="500"/>
+		<Size x="225" y="325"/>
 		<Anchors>
 			<Anchor point="LEFT">
 				<Offset x="64" y="0"/>
