@@ -1,7 +1,7 @@
 ## Interface: 30300
 ## Title : Non Compos Mentis v2.0
-## Notes: Track your progress of \124cffffff00Insane in the Membrane\124r.
-## Notes-deDE: Verfolge den Fortschritt von \124cffffff00Am Rande des Wahnsinns\124r.
+## Notes: Track your progress of |cffffff00Insane in the Membrane|r.
+## Notes-deDE: Verfolge den Fortschritt von |cffffff00Am Rande des Wahnsinns|r.
 
 ## Author: Cal Henderson (Original), Telkar@RG (Update)
 ## Version: 2.0
