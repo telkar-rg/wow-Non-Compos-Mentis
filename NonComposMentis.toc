@@ -1,8 +1,8 @@
 ## Interface: 30300
 ## Title : Non Compos Mentis
 ## Notes: Track your progress towards insanity.
-## Author: Cal Henderson (Bees on Hyjal-US)
-## Version: 1.4
+## Author: Cal Henderson (Original), Telkar@RG (Update)
+## Version: 2.0
 ## Dependencies: 
 ## SavedVariablesPerCharacter: NonComposMentisDB
 NonComposMentis.lua

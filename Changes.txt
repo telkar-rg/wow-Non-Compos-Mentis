@@ -26,5 +26,5 @@
  - show time spent in DM
  - show number of Knot spawns encountered (best estimation of number of DM runs)
 
-1.4
- - ?
+2.0
+ - Start of updated version
