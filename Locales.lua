@@ -10,6 +10,8 @@ GLOBAL_DEBUG_NCM = AddonTable
 Locales["enUS"] = {
 	["Ravenholdt"] = "Ravenholdt",
 	["Bloodsail Buccaneers"] = "Bloodsail Buccaneers",
+	["Booty Bay Bruiser"] = "Booty Bay Bruiser",
+	["Bruiser"] = "Bruiser",
 	
 	["Steamwheedle Cartel"] = "Steamwheedle Cartel",
 	["Booty Bay"] = "Booty Bay",
@@ -21,6 +23,8 @@ Locales["enUS"] = {
 	["Shen'dralar"] = "Shen'dralar",
 	
 	["Dire Maul"] = "Dire Maul",
+	["Free Knot"] = "Free Knot",
+	["Ogre Tannin"] = "Ogre Tannin",
 }
 Locales["enGB"] = Locales["enUS"]
 
@@ -28,6 +32,8 @@ Locales["enGB"] = Locales["enUS"]
 Locales["deDE"] = {
 	["Ravenholdt"] = "Rabenholdt",
 	["Bloodsail Buccaneers"] = "Blutsegelbukaniere",
+	["Booty Bay Bruiser"] = "Haudrauf von Beutebucht",
+	["Bruiser"] = "Haudrauf",
 	
 	["Steamwheedle Cartel"] = "Dampfdruckkartell",
 	["Booty Bay"] = "Beutebucht",
@@ -39,4 +45,6 @@ Locales["deDE"] = {
 	["Shen'dralar"] = "Shen'dralar",
 	
 	["Dire Maul"] = "Düsterbruch",
+	["Free Knot"] = "Befreit Knot",
+	["Ogre Tannin"] = "Ogergerbemittel",
 }

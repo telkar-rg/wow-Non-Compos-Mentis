@@ -5,6 +5,13 @@ local ClientLocale = GetLocale()
 local L = Locales[ClientLocale] or Locales["enUS"]
 
 
+local sysCol = "ffffff00"
+local function ColL(k)
+	if not L[k] then print(string.format("NCM: key |%s| not found",k)) end
+	return string.format("|c%s%s|r", sysCol, L[k])
+end
+
+
 NCM = {}
 
 function NCM.OnLoad()
@@ -139,12 +146,12 @@ function NCM.EndDMTimer()
 end
 
 function NCM.IsInDireMaul()
-
-	if (GetRealZoneText() == 'Dire Maul') then
-		return true;
-	else
-		return false;
+	
+	if (GetRealZoneText() == L['Dire Maul']) then
+		local inInstance, instanceType = IsInInstance()
+		return (inInstance and instanceType == "party") == true
 	end
+	return false
 end
 
 function NCM.NewTarget()
@@ -344,8 +351,8 @@ function NCM.UpdateFrame()
 
 	NCM.prev_reps = reps;
 
-	NCM.CheckDiffsAndIncrement(diffs['Ravenholdt'], 'Ravenholdt', 5 * factor);
-	NCM.CheckDiffsAndIncrement(diffs['Bloodsail Buccaneers'], 'Bloodsail Buccaneers', 25 * factor);
+	NCM.CheckDiffsAndIncrement(diffs[L['Ravenholdt']], L['Ravenholdt'], 5 * factor);
+	NCM.CheckDiffsAndIncrement(diffs[L['Bloodsail Buccaneers']], L['Bloodsail Buccaneers'], 25 * factor);
 
 	if (NCM.IsInDireMaul()) then
 		NCM.CheckDiffsAndIncrementCount(diffs['Booty Bay'], 'free-knot', 350 * factor);
@@ -367,13 +374,13 @@ function NCM.UpdateFrame()
 	-- Ravenholdt
 	--
 
-	local rh = reps["Ravenholdt"] or 0;
+	local rh = reps[L['Ravenholdt']] or 0;
 	local rh_remain = 42000 - rh;
 	if (rh_remain < 1) then
 
-		txt = txt .. "Ravenholdt: DONE!\n";
+		txt = txt .. ColL('Ravenholdt') ..": DONE!\n";
 	else
-		txt = txt .. "Ravenholdt\n";
+		txt = txt .. ColL('Ravenholdt') .. "\n";
 		txt = txt .. indent .. NCM.FormatNumber(rh_remain) .. " rep remaining\n";
 
 		-- can we still kill members?
@@ -382,9 +389,9 @@ function NCM.UpdateFrame()
 			local rh_kills = math.ceil(rh_remain_kill / (5 * factor));
 			txt = txt .. indent .. "Kills until Revered: " .. rh_kills .. "\n";
 
-			if (NCM.GetSessionLength('Ravenholdt') > 0) then
-				local len = NCM.GetSessionLength('Ravenholdt');
-				local delta = NCM.GetSessionDelta('Ravenholdt');
+			if (NCM.GetSessionLength(L['Ravenholdt']) > 0) then
+				local len = NCM.GetSessionLength(L['Ravenholdt']);
+				local delta = NCM.GetSessionDelta(L['Ravenholdt']);
 
 				delta = math.floor(delta / (5 * factor));
 				local len_remain = (len / delta) * rh_kills;
@@ -409,21 +416,21 @@ function NCM.UpdateFrame()
 
 	-- new default is 35500/36000 hostile, which is 6500 below 0/3000 neutral
 
-	local bb = reps["Bloodsail Buccaneers"] or -6500;
+	local bb = reps[L['Bloodsail Buccaneers']] or -6500;
 	local bb_remain = 9000 - bb;
 	if (bb_remain < 1) then
 
-		txt = txt .. "Bloodsail Buccaneers: DONE!\n";
+		txt = txt .. ColL('Bloodsail Buccaneers') .. ": DONE!\n";
 	else
-		txt = txt .. "Bloodsail Buccaneers\n";
+		txt = txt .. ColL('Bloodsail Buccaneers') .. "\n";
 		txt = txt .. indent .. NCM.FormatNumber(bb_remain) .. " rep remaining\n";
 
 		local bb_bruisers = math.ceil(bb_remain / (25 * factor));
-		txt = txt .. indent .. "Bruiser kills to finish: " .. bb_bruisers .. "\n";
+		txt = txt .. indent .. ColL('Bruiser') .. " kills to finish: " .. bb_bruisers .. "\n";
 
-		if (NCM.GetSessionLength('Bloodsail Buccaneers') > 0) then
-			local len = NCM.GetSessionLength('Bloodsail Buccaneers');
-			local delta = NCM.GetSessionDelta('Bloodsail Buccaneers');
+		if (NCM.GetSessionLength(L['Bloodsail Buccaneers']) > 0) then
+			local len = NCM.GetSessionLength(L['Bloodsail Buccaneers']);
+			local delta = NCM.GetSessionDelta(L['Bloodsail Buccaneers']);
 
 			delta = math.floor(delta / (25 * factor));
 			local len_remain = (len / delta) * bb_bruisers;
@@ -442,10 +449,10 @@ function NCM.UpdateFrame()
 	-- Goblin Factions
 	--
 
-	local g1 = reps["Booty Bay"] or 0;
-	local g2 = reps["Everlook"] or 0;
-	local g3 = reps["Gadgetzan"] or 0;
-	local g4 = reps["Ratchet"] or 0;
+	local g1 = reps[L["Booty Bay"]] or 0;
+	local g2 = reps[L["Everlook"]] or 0;
+	local g3 = reps[L["Gadgetzan"]] or 0;
+	local g4 = reps[L["Ratchet"]] or 0;
 
 	local g1_remain = 42000 - g1;
 	local g2_remain = 42000 - g2;
@@ -460,9 +467,9 @@ function NCM.UpdateFrame()
 
 	if (most_remain < 1) then
 
-		txt = txt .. "Goblin Factions: DONE!\n";
+		txt = txt .. ColL("Steamwheedle Cartel") .. ": DONE!\n";
 	else
-		txt = txt .. "Goblin Factions\n";
+		txt = txt .. ColL("Steamwheedle Cartel") .. "\n";
 		txt = txt .. indent .. NCM.FormatNumber(most_remain) .. " rep remaining\n";
 		txt = txt .. indent .. indent .. "(" .. NCM.FormatNumberShort(g1_remain) .. "/" .. NCM.FormatNumberShort(g2_remain) .. "/" 
 			.. NCM.FormatNumberShort(g3_remain) .. "/" .. NCM.FormatNumberShort(g4_remain) .. ")\n";
@@ -471,12 +478,12 @@ function NCM.UpdateFrame()
 		local g_ogre = math.ceil(most_remain / (75 * factor));
 		local g_both = math.ceil(most_remain / (425 * factor));
 		
-		txt = txt .. indent .. "Free Knot turnins to finish: " .. g_knot .. "\n";
+		txt = txt .. indent .. ColL("Free Knot") .. " turnins to finish: " .. g_knot .. "\n";
 		if (NCM.GetSessionDelta('free-knot') > 0) then
 			txt = txt .. indent .. indent .. "Done: " .. NCM.GetSessionDelta('free-knot') .. "\n";
 		end
 
-		txt = txt .. indent .. "Orge Tannin turnins to finish: " .. g_ogre .. "\n";
+		txt = txt .. indent .. ColL("Ogre Tannin") .. " turnins to finish: " .. g_ogre .. "\n";
 		if (NCM.GetSessionDelta('ogre-suit') > 0) then
 			txt = txt .. indent .. indent .. "Done: " .. NCM.GetSessionDelta('ogre-suit') .. "\n";
 		end
@@ -493,13 +500,13 @@ function NCM.UpdateFrame()
 	-- Darkmoon Faire
 	--
 
-	local dmf = reps["Darkmoon Faire"] or 0;
+	local dmf = reps[L["Darkmoon Faire"]] or 0;
 	local dmf_remain = 42000 - dmf;
 	if (dmf_remain < 1) then
 
-		txt = txt .. "Darkmoon Faire: DONE!\n";
+		txt = txt .. ColL("Darkmoon Faire") .. ": DONE!\n";
 	else
-		txt = txt .. "Darkmoon Faire\n";
+		txt = txt .. ColL("Darkmoon Faire") .. "\n";
 		txt = txt .. indent .. NCM.FormatNumber(dmf_remain) .. " rep remaining\n";
 
 		if (dmf < 5000) then
@@ -520,13 +527,13 @@ function NCM.UpdateFrame()
 	-- Shen'dralar
 	--
 
-	local sd = reps["Shen'dralar"] or 0;
+	local sd = reps[L["Shen'dralar"]] or 0;
 	local sd_remain = 42000 - sd;
 	if (sd_remain < 1) then
 
-		txt = txt .. "Shen'dralar: DONE!\n";
+		txt = txt .. ColL("Shen'dralar") .. ": DONE!\n";
 	else
-		txt = txt .. "Shen'dralar\n";
+		txt = txt .. ColL("Shen'dralar") .. "\n";
 		txt = txt .. indent .. NCM.FormatNumber(sd_remain) .. " rep remaining\n";
 
 		local sd_quests = math.ceil(sd_remain / (500 * factor));
@@ -788,6 +795,7 @@ function SlashCmdList.NONCOMPOSMENTIS(msg, editbox)
 		print "   /ncm hide - Hide addon";
 		print "   /ncm reset - Reset frame position and size";
 		print "   /ncm opts - Show options";
+		
 	end
 end
 
