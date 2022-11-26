@@ -1,10 +1,14 @@
 ## Interface: 30300
-## Title : Non Compos Mentis
-## Notes: Track your progress towards insanity.
+## Title : Non Compos Mentis v2.0
+## Notes: Track your progress of \124cffffff00Insane in the Membrane\124r.
+## Notes-deDE: Verfolge den Fortschritt von \124cffffff00Am Rande des Wahnsinns\124r.
+
 ## Author: Cal Henderson (Original), Telkar@RG (Update)
 ## Version: 2.0
 ## Dependencies: 
 ## SavedVariablesPerCharacter: NonComposMentisDB
+
+Locales.lua
 NonComposMentis.lua
 NonComposMentis.xml
 NonComposMentis_Options.xml

@@ -1,3 +1,5 @@
+local AddonName, AddonTable = ...
+
 NCM = {}
 
 function NCM.OnLoad()
