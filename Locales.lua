@@ -2,35 +2,41 @@
 
 local AddonName, AddonTable = ...
 AddonTable["Locales"] = {}
-local L = AddonTable["Locales"]
+local Locales = AddonTable["Locales"]
+
+GLOBAL_DEBUG_NCM = AddonTable
 
 
-L["enUS"] = {
-	"Ravenholdt" = "Ravenholdt",
-	"Bloodsail Buccaneers" = "Bloodsail Buccaneers",
+Locales["enUS"] = {
+	["Ravenholdt"] = "Ravenholdt",
+	["Bloodsail Buccaneers"] = "Bloodsail Buccaneers",
 	
-	"Steamwheedle Cartel" = "Steamwheedle Cartel",
-	"Booty Bay" = "Booty Bay",
-	"Everlook" = "Everlook",
-	"Gadgetzan" = "Gadgetzan",
-	"Ratchet" = "Ratchet",
+	["Steamwheedle Cartel"] = "Steamwheedle Cartel",
+	["Booty Bay"] = "Booty Bay",
+	["Everlook"] = "Everlook",
+	["Gadgetzan"] = "Gadgetzan",
+	["Ratchet"] = "Ratchet",
 	
-	"Darkmoon Faire" = "Darkmoon Faire",
-	"Shen'dralar" = "Shen'dralar",
+	["Darkmoon Faire"] = "Darkmoon Faire",
+	["Shen'dralar"] = "Shen'dralar",
+	
+	["Dire Maul"] = "Dire Maul",
 }
-L["enGB"] = L["enUS"]
+Locales["enGB"] = Locales["enUS"]
 
 
-L["deDe"] = {
-	"Ravenholdt" = "Rabenholdt",
-	"Bloodsail Buccaneers" = "Blutsegelbukaniere",
+Locales["deDE"] = {
+	["Ravenholdt"] = "Rabenholdt",
+	["Bloodsail Buccaneers"] = "Blutsegelbukaniere",
 	
-	"Steamwheedle Cartel" = "Dampfdruckkartell",
-	"Booty Bay" = "Beutebucht",
-	"Everlook" = "Ewige Warte",
-	"Gadgetzan" = "Gadgetzan",
-	"Ratchet" = "Ratschet",
+	["Steamwheedle Cartel"] = "Dampfdruckkartell",
+	["Booty Bay"] = "Beutebucht",
+	["Everlook"] = "Ewige Warte",
+	["Gadgetzan"] = "Gadgetzan",
+	["Ratchet"] = "Ratschet",
 	
-	"Darkmoon Faire" = "Dunkelmond-Jahrmarkt",
-	"Shen'dralar" = "Shen'dralar",
+	["Darkmoon Faire"] = "Dunkelmond-Jahrmarkt",
+	["Shen'dralar"] = "Shen'dralar",
+	
+	["Dire Maul"] = "Düsterbruch",
 }
