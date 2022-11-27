@@ -28,3 +28,6 @@
 
 2.0
  - Start of updated version
+ - Added deDE localisation
+ - Improved checking if in Dire Maul
+ 
