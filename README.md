@@ -11,5 +11,5 @@ The last downloadable version of the original addon is from <a href="https://www
 
 ## Changes
 
-### v2.0:
+### [v2.0](https://github.com/telkar-rg/wow-Non-Compos-Mentis/releases/tag/r-2.0):
 - Added deDe locale
